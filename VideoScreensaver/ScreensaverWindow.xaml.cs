@@ -20,7 +20,10 @@ namespace VideoScreensaver
 
         private void PlayVideoFromBeginning(object sender, RoutedEventArgs e)
         {
-            ScreensaverVideo.Position = new TimeSpan(0, 0, 0);
+            double durationInMinutes = ScreensaverVideo.NaturalDuration.TimeSpan.TotalMinutes;
+            int randomPositionInMinutes = (new Random()).Next((int)durationInMinutes);
+            ScreensaverVideo.Position = new TimeSpan(0, randomPositionInMinutes, 0);
+
             ScreensaverVideo.Play();
         }
 
